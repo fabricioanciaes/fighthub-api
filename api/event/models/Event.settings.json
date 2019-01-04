@@ -1,0 +1,97 @@
+{
+  "connection": "default",
+  "collectionName": "event",
+  "info": {
+    "name": "event",
+    "description": "Eventos do fighthub. Referente a um torneio ou jogatina."
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "maxLength": 64,
+      "type": "string",
+      "required": true
+    },
+    "dateStart": {
+      "default": "",
+      "type": "date",
+      "required": true
+    },
+    "dateEnd": {
+      "default": "",
+      "type": "date",
+      "required": true
+    },
+    "desc": {
+      "default": "",
+      "type": "text",
+      "required": true
+    },
+    "price": {
+      "default": "",
+      "type": "decimal"
+    },
+    "img": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "state": {
+      "default": "",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "AC",
+        "AL",
+        "AP",
+        "AM",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MT",
+        "MS",
+        "MG",
+        "PA",
+        "PB",
+        "PR",
+        "PE",
+        "PI",
+        "RJ",
+        "RN",
+        "RS",
+        "RO",
+        "RR",
+        "SC",
+        "SP",
+        "SE",
+        "TO"
+      ]
+    },
+    "links": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "stream": {
+      "default": "",
+      "type": "string"
+    },
+    "address": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "onlineEvent": {
+      "default": false,
+      "type": "boolean",
+      "required": true
+    }
+  }
+}
