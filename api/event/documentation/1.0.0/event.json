@@ -525,7 +525,7 @@
           },
           "price": {
             "type": "number",
-            "default": ""
+            "default": 0
           },
           "state": {
             "type": "string",
@@ -623,7 +623,7 @@
           },
           "price": {
             "type": "number",
-            "default": ""
+            "default": 0
           },
           "state": {
             "type": "string",

@@ -31,7 +31,7 @@
       "required": true
     },
     "price": {
-      "default": "",
+      "default": 0,
       "type": "decimal"
     },
     "state": {
