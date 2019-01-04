@@ -1,5 +1,5 @@
 {
-  "name": "fighthub",
+  "name": "strapi-heroku-app",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application.",
@@ -24,24 +24,24 @@
     "strapi-hook-mongoose": "3.0.0-alpha.17"
   },
   "author": {
-    "name": "fanciaes",
+    "name": "pierreburgy",
     "email": "",
     "url": ""
   },
   "maintainers": [
     {
-      "name": "fanciaes",
+      "name": "pierreburgy",
       "email": "",
       "url": ""
     }
   ],
   "strapi": {
     "packageManager": "npm",
-    "uuid": "53eb4dfe-e86b-4562-8983-e0b2681c1eae"
+    "uuid": "c0c2a4cd-7d8d-4bcf-ac00-3b094746325c"
   },
   "engines": {
-    "node": "~ 10.15.0",
-    "npm": "~ 6.4.1"
+    "node": ">= 10.0.0",
+    "npm": ">= 6.0.0"
   },
   "license": "MIT"
 }
