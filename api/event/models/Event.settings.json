@@ -34,12 +34,6 @@
       "default": "",
       "type": "decimal"
     },
-    "img": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": false
-    },
     "state": {
       "default": "",
       "type": "enumeration",
@@ -91,6 +85,20 @@
     "onlineEvent": {
       "default": false,
       "type": "boolean",
+      "required": true
+    },
+    "imgUrl": {
+      "default": "",
+      "type": "string"
+    },
+    "isMajor": {
+      "default": false,
+      "type": "boolean",
+      "required": true
+    },
+    "games": {
+      "default": "",
+      "type": "string",
       "required": true
     }
   }

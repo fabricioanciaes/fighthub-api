@@ -1,9 +1,9 @@
-input createPostInput {
-  data: PostInput
+input createEventInput {
+  data: EventInput
 }
 
-type createPostPayload {
-  post: Post
+type createEventPayload {
+  event: Event
 }
 
 input createRoleInput {
@@ -12,14 +12,6 @@ input createRoleInput {
 
 type createRolePayload {
   role: UsersPermissionsRole
-}
-
-input createTagInput {
-  data: TagInput
-}
-
-type createTagPayload {
-  tag: Tag
 }
 
 input createUserInput {
@@ -35,12 +27,12 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
-input deletePostInput {
+input deleteEventInput {
   where: InputID
 }
 
-type deletePostPayload {
-  post: Post
+type deleteEventPayload {
+  event: Event
 }
 
 input deleteRoleInput {
@@ -51,20 +43,207 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
-input deleteTagInput {
-  where: InputID
-}
-
-type deleteTagPayload {
-  tag: Tag
-}
-
 input deleteUserInput {
   where: InputID
 }
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+enum ENUM_EVENT_STATE {
+  AC
+  AL
+  AP
+  AM
+  BA
+  CE
+  DF
+  ES
+  GO
+  MA
+  MT
+  MS
+  MG
+  PA
+  PB
+  PR
+  PE
+  PI
+  RJ
+  RN
+  RS
+  RO
+  RR
+  SC
+  SP
+  SE
+  TO
+}
+
+"""Eventos do fighthub. Referente a um torneio ou jogatina."""
+type Event {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  dateStart: DateTime!
+  dateEnd: DateTime!
+  desc: String!
+  price: Float
+  state: ENUM_EVENT_STATE!
+  links: String!
+  stream: String
+  address: String!
+  onlineEvent: Boolean!
+  imgUrl: String
+  isMajor: Boolean!
+  games: String!
+}
+
+type EventAggregator {
+  count: Int
+  sum: EventAggregatorSum
+  avg: EventAggregatorAvg
+  min: EventAggregatorMin
+  max: EventAggregatorMax
+}
+
+type EventAggregatorAvg {
+  price: Float
+}
+
+type EventAggregatorMax {
+  price: Float
+}
+
+type EventAggregatorMin {
+  price: Float
+}
+
+type EventAggregatorSum {
+  price: Float
+}
+
+type EventConnection {
+  values: [Event]
+  groupBy: EventGroupBy
+  aggregate: EventAggregator
+}
+
+type EventConnection_id {
+  key: ID
+  connection: EventConnection
+}
+
+type EventConnectionAddress {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionCreatedAt {
+  key: DateTime
+  connection: EventConnection
+}
+
+type EventConnectionDateEnd {
+  key: DateTime
+  connection: EventConnection
+}
+
+type EventConnectionDateStart {
+  key: DateTime
+  connection: EventConnection
+}
+
+type EventConnectionDesc {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionGames {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionImgUrl {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionIsMajor {
+  key: Boolean
+  connection: EventConnection
+}
+
+type EventConnectionLinks {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionName {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionOnlineEvent {
+  key: Boolean
+  connection: EventConnection
+}
+
+type EventConnectionPrice {
+  key: Float
+  connection: EventConnection
+}
+
+type EventConnectionState {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionStream {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionUpdatedAt {
+  key: DateTime
+  connection: EventConnection
+}
+
+type EventGroupBy {
+  _id: [EventConnection_id]
+  createdAt: [EventConnectionCreatedAt]
+  updatedAt: [EventConnectionUpdatedAt]
+  name: [EventConnectionName]
+  dateStart: [EventConnectionDateStart]
+  dateEnd: [EventConnectionDateEnd]
+  desc: [EventConnectionDesc]
+  price: [EventConnectionPrice]
+  state: [EventConnectionState]
+  links: [EventConnectionLinks]
+  stream: [EventConnectionStream]
+  address: [EventConnectionAddress]
+  onlineEvent: [EventConnectionOnlineEvent]
+  imgUrl: [EventConnectionImgUrl]
+  isMajor: [EventConnectionIsMajor]
+  games: [EventConnectionGames]
+}
+
+input EventInput {
+  name: String!
+  dateStart: DateTime!
+  dateEnd: DateTime!
+  desc: String!
+  price: Float
+  state: ENUM_EVENT_STATE!
+  links: String!
+  stream: String
+  address: String!
+  onlineEvent: Boolean!
+  imgUrl: String
+  isMajor: Boolean!
+  games: String!
 }
 
 input FileInput {
@@ -89,15 +268,12 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Post | createPostPayload | updatePostPayload | deletePostPayload | PostConnection | PostAggregator | PostGroupBy | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionContent | PostConnectionCover | Tag | createTagPayload | updateTagPayload | deleteTagPayload | TagConnection | TagAggregator | TagGroupBy | TagConnection_id | TagConnectionCreatedAt | TagConnectionUpdatedAt | TagConnectionName | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventAggregatorSum | EventAggregatorAvg | EventAggregatorMin | EventAggregatorMax | EventGroupBy | EventConnection_id | EventConnectionCreatedAt | EventConnectionUpdatedAt | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionPrice | EventConnectionState | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionOnlineEvent | EventConnectionImgUrl | EventConnectionIsMajor | EventConnectionGames | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
-  createPost(input: createPostInput): createPostPayload
-  updatePost(input: updatePostInput): updatePostPayload
-  deletePost(input: deletePostInput): deletePostPayload
-  createTag(input: createTagInput): createTagPayload
-  updateTag(input: updateTagInput): updateTagPayload
-  deleteTag(input: deleteTagInput): deleteTagPayload
+  createEvent(input: createEventInput): createEventPayload
+  updateEvent(input: updateEventInput): updateEventPayload
+  deleteEvent(input: deleteEventInput): deleteEventPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -113,79 +289,10 @@ type Mutation {
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
 
-type Post {
-  _id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  title: String
-  content: String
-  cover: UploadFile
-  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
-}
-
-type PostAggregator {
-  count: Int
-}
-
-type PostConnection {
-  values: [Post]
-  groupBy: PostGroupBy
-  aggregate: PostAggregator
-}
-
-type PostConnection_id {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionContent {
-  key: String
-  connection: PostConnection
-}
-
-type PostConnectionCover {
-  key: ID
-  connection: PostConnection
-}
-
-type PostConnectionCreatedAt {
-  key: DateTime
-  connection: PostConnection
-}
-
-type PostConnectionTitle {
-  key: String
-  connection: PostConnection
-}
-
-type PostConnectionUpdatedAt {
-  key: DateTime
-  connection: PostConnection
-}
-
-type PostGroupBy {
-  _id: [PostConnection_id]
-  createdAt: [PostConnectionCreatedAt]
-  updatedAt: [PostConnectionUpdatedAt]
-  title: [PostConnectionTitle]
-  content: [PostConnectionContent]
-  cover: [PostConnectionCover]
-}
-
-input PostInput {
-  title: String
-  content: String
-  cover: ID
-  tags: [ID]
-}
-
 type Query {
-  post(id: ID!): Post
-  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
-  postsConnection(sort: String, limit: Int, start: Int, where: JSON): PostConnection
-  tag(id: ID!): Tag
-  tags(sort: String, limit: Int, start: Int, where: JSON): [Tag]
-  tagsConnection(sort: String, limit: Int, start: Int, where: JSON): TagConnection
+  event(id: ID!): Event
+  events(sort: String, limit: Int, start: Int, where: JSON): [Event]
+  eventsConnection(sort: String, limit: Int, start: Int, where: JSON): EventConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -209,63 +316,13 @@ input RoleInput {
   users: [ID]
 }
 
-type Tag {
-  _id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  name: String
-  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
-}
-
-type TagAggregator {
-  count: Int
-}
-
-type TagConnection {
-  values: [Tag]
-  groupBy: TagGroupBy
-  aggregate: TagAggregator
-}
-
-type TagConnection_id {
-  key: ID
-  connection: TagConnection
-}
-
-type TagConnectionCreatedAt {
-  key: DateTime
-  connection: TagConnection
-}
-
-type TagConnectionName {
-  key: String
-  connection: TagConnection
-}
-
-type TagConnectionUpdatedAt {
-  key: DateTime
-  connection: TagConnection
-}
-
-type TagGroupBy {
-  _id: [TagConnection_id]
-  createdAt: [TagConnectionCreatedAt]
-  updatedAt: [TagConnectionUpdatedAt]
-  name: [TagConnectionName]
-}
-
-input TagInput {
-  name: String
-  posts: [ID]
-}
-
-input updatePostInput {
+input updateEventInput {
   where: InputID
-  data: PostInput
+  data: EventInput
 }
 
-type updatePostPayload {
-  post: Post
+type updateEventPayload {
+  event: Event
 }
 
 input updateRoleInput {
@@ -275,15 +332,6 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
-}
-
-input updateTagInput {
-  where: InputID
-  data: TagInput
-}
-
-type updateTagPayload {
-  tag: Tag
 }
 
 input updateUserInput {

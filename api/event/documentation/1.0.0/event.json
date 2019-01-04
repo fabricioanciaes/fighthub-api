@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/posts": {
+    "/events": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Event"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Event"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Event"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Event"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewEvent"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/events/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Event"
         ],
         "parameters": []
       }
     },
-    "/posts/{_id}": {
+    "/events/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Event"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Event"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Event"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Event"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewEvent"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Event"
         ],
         "parameters": [
           {
@@ -488,107 +488,203 @@
   },
   "components": {
     "schemas": {
-      "Post": {
+      "Event": {
         "required": [
-          "id"
+          "id",
+          "name",
+          "dateStart",
+          "dateEnd",
+          "desc",
+          "state",
+          "links",
+          "address",
+          "onlineEvent",
+          "isMajor",
+          "games"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "maxLength": 64
+          },
+          "dateStart": {
             "type": "string",
             "default": ""
           },
-          "content": {
+          "dateEnd": {
             "type": "string",
             "default": ""
           },
-          "cover": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "sha256": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "public_id": {
-                "type": "string"
-              },
-              "related": {
-                "type": "string"
-              }
-            }
+          "desc": {
+            "type": "string",
+            "default": ""
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "posts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+          "price": {
+            "type": "number",
+            "default": ""
+          },
+          "state": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ]
+          },
+          "links": {
+            "type": "string",
+            "default": ""
+          },
+          "stream": {
+            "type": "string",
+            "default": ""
+          },
+          "address": {
+            "type": "string",
+            "default": ""
+          },
+          "onlineEvent": {
+            "type": "boolean",
+            "default": false
+          },
+          "imgUrl": {
+            "type": "string",
+            "default": ""
+          },
+          "isMajor": {
+            "type": "boolean",
+            "default": false
+          },
+          "games": {
+            "type": "string",
+            "default": ""
           }
         }
       },
-      "NewPost": {
+      "NewEvent": {
+        "required": [
+          "name",
+          "dateStart",
+          "dateEnd",
+          "desc",
+          "state",
+          "links",
+          "address",
+          "onlineEvent",
+          "isMajor",
+          "games"
+        ],
         "properties": {
-          "title": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "maxLength": 64
+          },
+          "dateStart": {
             "type": "string",
             "default": ""
           },
-          "content": {
+          "dateEnd": {
             "type": "string",
             "default": ""
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "desc": {
+            "type": "string",
+            "default": ""
+          },
+          "price": {
+            "type": "number",
+            "default": ""
+          },
+          "state": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ]
+          },
+          "links": {
+            "type": "string",
+            "default": ""
+          },
+          "stream": {
+            "type": "string",
+            "default": ""
+          },
+          "address": {
+            "type": "string",
+            "default": ""
+          },
+          "onlineEvent": {
+            "type": "boolean",
+            "default": false
+          },
+          "imgUrl": {
+            "type": "string",
+            "default": ""
+          },
+          "isMajor": {
+            "type": "boolean",
+            "default": false
+          },
+          "games": {
+            "type": "string",
+            "default": ""
           }
         }
       }
@@ -596,7 +692,7 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Event"
     }
   ]
 }
