@@ -32,7 +32,8 @@
     },
     "price": {
       "default": 0,
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "state": {
       "default": "",
@@ -82,24 +83,24 @@
       "type": "string",
       "required": true
     },
-    "onlineEvent": {
-      "default": false,
-      "type": "boolean",
-      "required": true
-    },
     "imgUrl": {
       "default": "",
       "type": "string"
-    },
-    "isMajor": {
-      "default": false,
-      "type": "boolean",
-      "required": true
     },
     "games": {
       "default": "",
       "type": "string",
       "required": true
+    },
+    "type": {
+      "default": "",
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Online",
+        " Offline",
+        " Major"
+      ]
     }
   }
 }

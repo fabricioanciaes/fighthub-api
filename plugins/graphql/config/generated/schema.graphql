@@ -81,6 +81,12 @@ enum ENUM_EVENT_STATE {
   TO
 }
 
+enum ENUM_EVENT_TYPE {
+  Online
+  Offline
+  Major
+}
+
 """Eventos do fighthub. Referente a um torneio ou jogatina."""
 type Event {
   _id: ID!
@@ -90,39 +96,18 @@ type Event {
   dateStart: DateTime!
   dateEnd: DateTime!
   desc: String!
-  price: Float
+  price: Float!
   state: ENUM_EVENT_STATE!
   links: String!
   stream: String
   address: String!
-  onlineEvent: Boolean!
   imgUrl: String
-  isMajor: Boolean!
   games: String!
+  type: ENUM_EVENT_TYPE!
 }
 
 type EventAggregator {
   count: Int
-  sum: EventAggregatorSum
-  avg: EventAggregatorAvg
-  min: EventAggregatorMin
-  max: EventAggregatorMax
-}
-
-type EventAggregatorAvg {
-  price: Float
-}
-
-type EventAggregatorMax {
-  price: Float
-}
-
-type EventAggregatorMin {
-  price: Float
-}
-
-type EventAggregatorSum {
-  price: Float
 }
 
 type EventConnection {
@@ -171,11 +156,6 @@ type EventConnectionImgUrl {
   connection: EventConnection
 }
 
-type EventConnectionIsMajor {
-  key: Boolean
-  connection: EventConnection
-}
-
 type EventConnectionLinks {
   key: String
   connection: EventConnection
@@ -183,11 +163,6 @@ type EventConnectionLinks {
 
 type EventConnectionName {
   key: String
-  connection: EventConnection
-}
-
-type EventConnectionOnlineEvent {
-  key: Boolean
   connection: EventConnection
 }
 
@@ -202,6 +177,11 @@ type EventConnectionState {
 }
 
 type EventConnectionStream {
+  key: String
+  connection: EventConnection
+}
+
+type EventConnectionType {
   key: String
   connection: EventConnection
 }
@@ -224,10 +204,9 @@ type EventGroupBy {
   links: [EventConnectionLinks]
   stream: [EventConnectionStream]
   address: [EventConnectionAddress]
-  onlineEvent: [EventConnectionOnlineEvent]
   imgUrl: [EventConnectionImgUrl]
-  isMajor: [EventConnectionIsMajor]
   games: [EventConnectionGames]
+  type: [EventConnectionType]
 }
 
 input EventInput {
@@ -235,15 +214,14 @@ input EventInput {
   dateStart: DateTime!
   dateEnd: DateTime!
   desc: String!
-  price: Float
+  price: Float!
   state: ENUM_EVENT_STATE!
   links: String!
   stream: String
   address: String!
-  onlineEvent: Boolean!
   imgUrl: String
-  isMajor: Boolean!
   games: String!
+  type: ENUM_EVENT_TYPE!
 }
 
 input FileInput {
@@ -268,7 +246,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventAggregatorSum | EventAggregatorAvg | EventAggregatorMin | EventAggregatorMax | EventGroupBy | EventConnection_id | EventConnectionCreatedAt | EventConnectionUpdatedAt | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionPrice | EventConnectionState | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionOnlineEvent | EventConnectionImgUrl | EventConnectionIsMajor | EventConnectionGames | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventGroupBy | EventConnection_id | EventConnectionCreatedAt | EventConnectionUpdatedAt | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionPrice | EventConnectionState | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionImgUrl | EventConnectionGames | EventConnectionType | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createEvent(input: createEventInput): createEventPayload

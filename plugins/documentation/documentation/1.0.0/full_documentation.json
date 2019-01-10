@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "01/04/2019 4:54:47 PM"
+    "x-generation-date": "01/10/2019 6:31:32 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2552,12 +2552,12 @@
           "dateStart",
           "dateEnd",
           "desc",
+          "price",
           "state",
           "links",
           "address",
-          "onlineEvent",
-          "isMajor",
-          "games"
+          "games",
+          "type"
         ],
         "properties": {
           "id": {
@@ -2629,21 +2629,22 @@
             "type": "string",
             "default": ""
           },
-          "onlineEvent": {
-            "type": "boolean",
-            "default": false
-          },
           "imgUrl": {
             "type": "string",
             "default": ""
           },
-          "isMajor": {
-            "type": "boolean",
-            "default": false
-          },
           "games": {
             "type": "string",
             "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "Online",
+              " Offline",
+              " Major"
+            ]
           }
         }
       },
@@ -2653,12 +2654,12 @@
           "dateStart",
           "dateEnd",
           "desc",
+          "price",
           "state",
           "links",
           "address",
-          "onlineEvent",
-          "isMajor",
-          "games"
+          "games",
+          "type"
         ],
         "properties": {
           "name": {
@@ -2727,21 +2728,22 @@
             "type": "string",
             "default": ""
           },
-          "onlineEvent": {
-            "type": "boolean",
-            "default": false
-          },
           "imgUrl": {
             "type": "string",
             "default": ""
           },
-          "isMajor": {
-            "type": "boolean",
-            "default": false
-          },
           "games": {
             "type": "string",
             "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "Online",
+              " Offline",
+              " Major"
+            ]
           }
         }
       },

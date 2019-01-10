@@ -495,12 +495,12 @@
           "dateStart",
           "dateEnd",
           "desc",
+          "price",
           "state",
           "links",
           "address",
-          "onlineEvent",
-          "isMajor",
-          "games"
+          "games",
+          "type"
         ],
         "properties": {
           "id": {
@@ -572,21 +572,22 @@
             "type": "string",
             "default": ""
           },
-          "onlineEvent": {
-            "type": "boolean",
-            "default": false
-          },
           "imgUrl": {
             "type": "string",
             "default": ""
           },
-          "isMajor": {
-            "type": "boolean",
-            "default": false
-          },
           "games": {
             "type": "string",
             "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "Online",
+              " Offline",
+              " Major"
+            ]
           }
         }
       },
@@ -596,12 +597,12 @@
           "dateStart",
           "dateEnd",
           "desc",
+          "price",
           "state",
           "links",
           "address",
-          "onlineEvent",
-          "isMajor",
-          "games"
+          "games",
+          "type"
         ],
         "properties": {
           "name": {
@@ -670,21 +671,22 @@
             "type": "string",
             "default": ""
           },
-          "onlineEvent": {
-            "type": "boolean",
-            "default": false
-          },
           "imgUrl": {
             "type": "string",
             "default": ""
           },
-          "isMajor": {
-            "type": "boolean",
-            "default": false
-          },
           "games": {
             "type": "string",
             "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "Online",
+              " Offline",
+              " Major"
+            ]
           }
         }
       }
