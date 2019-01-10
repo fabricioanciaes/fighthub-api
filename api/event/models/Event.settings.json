@@ -30,11 +30,6 @@
       "type": "text",
       "required": true
     },
-    "price": {
-      "default": 0,
-      "type": "decimal",
-      "required": true
-    },
     "state": {
       "default": "",
       "type": "enumeration",

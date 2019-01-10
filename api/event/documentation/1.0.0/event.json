@@ -495,7 +495,6 @@
           "dateStart",
           "dateEnd",
           "desc",
-          "price",
           "state",
           "links",
           "address",
@@ -522,10 +521,6 @@
           "desc": {
             "type": "string",
             "default": ""
-          },
-          "price": {
-            "type": "number",
-            "default": 0
           },
           "state": {
             "type": "string",
@@ -597,7 +592,6 @@
           "dateStart",
           "dateEnd",
           "desc",
-          "price",
           "state",
           "links",
           "address",
@@ -621,10 +615,6 @@
           "desc": {
             "type": "string",
             "default": ""
-          },
-          "price": {
-            "type": "number",
-            "default": 0
           },
           "state": {
             "type": "string",
