@@ -64,6 +64,11 @@
         "TO"
       ]
     },
+    "inscricao": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
     "links": {
       "default": "",
       "type": "string",
