@@ -499,7 +499,7 @@
           "links",
           "address",
           "games",
-          "type"
+          "tipoEvento"
         ],
         "properties": {
           "id": {
@@ -575,7 +575,7 @@
             "type": "string",
             "default": ""
           },
-          "type": {
+          "tipoEvento": {
             "type": "string",
             "default": "",
             "enum": [
@@ -596,7 +596,7 @@
           "links",
           "address",
           "games",
-          "type"
+          "tipoEvento"
         ],
         "properties": {
           "name": {
@@ -669,7 +669,7 @@
             "type": "string",
             "default": ""
           },
-          "type": {
+          "tipoEvento": {
             "type": "string",
             "default": "",
             "enum": [

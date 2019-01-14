@@ -81,7 +81,7 @@ enum ENUM_EVENT_STATE {
   TO
 }
 
-enum ENUM_EVENT_TYPE {
+enum ENUM_EVENT_TIPOEVENTO {
   Online
   Offline
   Major
@@ -102,7 +102,7 @@ type Event {
   address: String!
   imgUrl: String
   games: String!
-  type: ENUM_EVENT_TYPE!
+  tipoEvento: ENUM_EVENT_TIPOEVENTO!
 }
 
 type EventAggregator {
@@ -175,7 +175,7 @@ type EventConnectionStream {
   connection: EventConnection
 }
 
-type EventConnectionType {
+type EventConnectionTipoEvento {
   key: String
   connection: EventConnection
 }
@@ -199,7 +199,7 @@ type EventGroupBy {
   address: [EventConnectionAddress]
   imgUrl: [EventConnectionImgUrl]
   games: [EventConnectionGames]
-  type: [EventConnectionType]
+  tipoEvento: [EventConnectionTipoEvento]
 }
 
 input EventInput {
@@ -213,7 +213,7 @@ input EventInput {
   address: String!
   imgUrl: String
   games: String!
-  type: ENUM_EVENT_TYPE!
+  tipoEvento: ENUM_EVENT_TIPOEVENTO!
 }
 
 input FileInput {
@@ -238,7 +238,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventGroupBy | EventConnection_id | EventConnectionCreatedAt | EventConnectionUpdatedAt | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionState | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionImgUrl | EventConnectionGames | EventConnectionType | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventGroupBy | EventConnection_id | EventConnectionCreatedAt | EventConnectionUpdatedAt | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionState | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionImgUrl | EventConnectionGames | EventConnectionTipoEvento | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createEvent(input: createEventInput): createEventPayload
