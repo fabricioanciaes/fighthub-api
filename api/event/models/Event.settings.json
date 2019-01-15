@@ -35,6 +35,7 @@
       "type": "enumeration",
       "required": true,
       "enum": [
+        "Online",
         "AC",
         "AL",
         "AP",
@@ -67,12 +68,12 @@
     "inscricao": {
       "default": "",
       "type": "string",
-      "required": true
+      "required": false
     },
     "links": {
       "default": "",
       "type": "string",
-      "required": true
+      "required": false
     },
     "stream": {
       "default": "",
