@@ -98,8 +98,8 @@
       "required": true,
       "enum": [
         "Online",
-        " Offline",
-        " Major"
+        "Offline",
+        "Major"
       ]
     }
   }
