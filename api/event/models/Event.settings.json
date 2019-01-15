@@ -67,13 +67,11 @@
     },
     "inscricao": {
       "default": "",
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "links": {
       "default": "",
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "stream": {
       "default": "",
