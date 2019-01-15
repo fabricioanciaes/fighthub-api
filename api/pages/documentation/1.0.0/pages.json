@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/events": {
+    "/pages": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the pages's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve pages document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Event"
+                    "$ref": "#/components/schemas/Pages"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Event"
+          "Pages"
         ],
         "parameters": [
           {
@@ -168,14 +168,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new pages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve pages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Event"
+                  "$ref": "#/components/schemas/Pages"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Event"
+          "Pages"
         ],
         "requestBody": {
           "description": "",
@@ -221,20 +221,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvent"
+                "$ref": "#/components/schemas/NewPages"
               }
             }
           }
         }
       }
     },
-    "/events/count": {
+    "/pages/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of pages documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve pages document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -280,22 +280,22 @@
         },
         "summary": "",
         "tags": [
-          "Event"
+          "Pages"
         ],
         "parameters": []
       }
     },
-    "/events/{_id}": {
+    "/pages/{_id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one pages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve pages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Event"
+                  "$ref": "#/components/schemas/Pages"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Event"
+          "Pages"
         ],
         "parameters": [
           {
@@ -350,14 +350,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single pages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve pages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Event"
+                  "$ref": "#/components/schemas/Pages"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Event"
+          "Pages"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvent"
+                "$ref": "#/components/schemas/NewPages"
               }
             }
           }
@@ -423,10 +423,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single pages record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single pages based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Event"
+          "Pages"
         ],
         "parameters": [
           {
@@ -488,203 +488,39 @@
   },
   "components": {
     "schemas": {
-      "Event": {
+      "Pages": {
         "required": [
           "id",
-          "name",
-          "dateStart",
-          "dateEnd",
-          "desc",
-          "state",
-          "address",
-          "games",
-          "tipoEvento"
+          "body",
+          "title"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "name": {
-            "type": "string",
-            "default": "",
-            "maxLength": 64
-          },
-          "dateStart": {
+          "body": {
             "type": "string",
             "default": ""
           },
-          "dateEnd": {
+          "title": {
             "type": "string",
             "default": ""
-          },
-          "desc": {
-            "type": "string",
-            "default": ""
-          },
-          "state": {
-            "type": "string",
-            "default": "",
-            "enum": [
-              "Online",
-              "AC",
-              "AL",
-              "AP",
-              "AM",
-              "BA",
-              "CE",
-              "DF",
-              "ES",
-              "GO",
-              "MA",
-              "MT",
-              "MS",
-              "MG",
-              "PA",
-              "PB",
-              "PR",
-              "PE",
-              "PI",
-              "RJ",
-              "RN",
-              "RS",
-              "RO",
-              "RR",
-              "SC",
-              "SP",
-              "SE",
-              "TO"
-            ]
-          },
-          "inscricao": {
-            "type": "string",
-            "default": ""
-          },
-          "links": {
-            "type": "string",
-            "default": ""
-          },
-          "stream": {
-            "type": "string",
-            "default": ""
-          },
-          "address": {
-            "type": "string",
-            "default": ""
-          },
-          "imgUrl": {
-            "type": "string",
-            "default": ""
-          },
-          "games": {
-            "type": "string",
-            "default": ""
-          },
-          "tipoEvento": {
-            "type": "string",
-            "default": "",
-            "enum": [
-              "Online",
-              "Offline",
-              "Major"
-            ]
           }
         }
       },
-      "NewEvent": {
+      "NewPages": {
         "required": [
-          "name",
-          "dateStart",
-          "dateEnd",
-          "desc",
-          "state",
-          "address",
-          "games",
-          "tipoEvento"
+          "body",
+          "title"
         ],
         "properties": {
-          "name": {
-            "type": "string",
-            "default": "",
-            "maxLength": 64
-          },
-          "dateStart": {
+          "body": {
             "type": "string",
             "default": ""
           },
-          "dateEnd": {
+          "title": {
             "type": "string",
             "default": ""
-          },
-          "desc": {
-            "type": "string",
-            "default": ""
-          },
-          "state": {
-            "type": "string",
-            "default": "",
-            "enum": [
-              "Online",
-              "AC",
-              "AL",
-              "AP",
-              "AM",
-              "BA",
-              "CE",
-              "DF",
-              "ES",
-              "GO",
-              "MA",
-              "MT",
-              "MS",
-              "MG",
-              "PA",
-              "PB",
-              "PR",
-              "PE",
-              "PI",
-              "RJ",
-              "RN",
-              "RS",
-              "RO",
-              "RR",
-              "SC",
-              "SP",
-              "SE",
-              "TO"
-            ]
-          },
-          "inscricao": {
-            "type": "string",
-            "default": ""
-          },
-          "links": {
-            "type": "string",
-            "default": ""
-          },
-          "stream": {
-            "type": "string",
-            "default": ""
-          },
-          "address": {
-            "type": "string",
-            "default": ""
-          },
-          "imgUrl": {
-            "type": "string",
-            "default": ""
-          },
-          "games": {
-            "type": "string",
-            "default": ""
-          },
-          "tipoEvento": {
-            "type": "string",
-            "default": "",
-            "enum": [
-              "Online",
-              "Offline",
-              "Major"
-            ]
           }
         }
       }
@@ -692,7 +528,7 @@
   },
   "tags": [
     {
-      "name": "Event"
+      "name": "Pages"
     }
   ]
 }
