@@ -159,6 +159,8 @@ enum ENUM_EVENT_TIPOEVENTO {
 """Eventos do fighthub. Referente a um torneio ou jogatina."""
 type Event {
   _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String!
   dateStart: DateTime!
   dateEnd: DateTime!
@@ -190,6 +192,11 @@ type EventConnection_id {
 
 type EventConnectionAddress {
   key: String
+  connection: EventConnection
+}
+
+type EventConnectionCreatedAt {
+  key: DateTime
   connection: EventConnection
 }
 
@@ -248,8 +255,15 @@ type EventConnectionTipoEvento {
   connection: EventConnection
 }
 
+type EventConnectionUpdatedAt {
+  key: DateTime
+  connection: EventConnection
+}
+
 type EventGroupBy {
   _id: [EventConnection_id]
+  createdAt: [EventConnectionCreatedAt]
+  updatedAt: [EventConnectionUpdatedAt]
   name: [EventConnectionName]
   dateStart: [EventConnectionDateStart]
   dateEnd: [EventConnectionDateEnd]
@@ -301,7 +315,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventGroupBy | EventConnection_id | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionState | EventConnectionInscricao | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionImgUrl | EventConnectionGames | EventConnectionTipoEvento | Pages | createPagesPayload | updatePagesPayload | deletePagesPayload | PagesConnection | PagesAggregator | PagesGroupBy | PagesConnection_id | PagesConnectionBody | PagesConnectionTitle | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Event | createEventPayload | updateEventPayload | deleteEventPayload | EventConnection | EventAggregator | EventGroupBy | EventConnection_id | EventConnectionCreatedAt | EventConnectionUpdatedAt | EventConnectionName | EventConnectionDateStart | EventConnectionDateEnd | EventConnectionDesc | EventConnectionState | EventConnectionInscricao | EventConnectionLinks | EventConnectionStream | EventConnectionAddress | EventConnectionImgUrl | EventConnectionGames | EventConnectionTipoEvento | Pages | createPagesPayload | updatePagesPayload | deletePagesPayload | PagesConnection | PagesAggregator | PagesGroupBy | PagesConnection_id | PagesConnectionCreatedAt | PagesConnectionUpdatedAt | PagesConnectionBody | PagesConnectionTitle | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createEvent(input: createEventInput): createEventPayload
@@ -333,6 +347,8 @@ type Mutation {
 
 type Pages {
   _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   body: String!
   title: String!
 }
@@ -357,13 +373,25 @@ type PagesConnectionBody {
   connection: PagesConnection
 }
 
+type PagesConnectionCreatedAt {
+  key: DateTime
+  connection: PagesConnection
+}
+
 type PagesConnectionTitle {
   key: String
   connection: PagesConnection
 }
 
+type PagesConnectionUpdatedAt {
+  key: DateTime
+  connection: PagesConnection
+}
+
 type PagesGroupBy {
   _id: [PagesConnection_id]
+  createdAt: [PagesConnectionCreatedAt]
+  updatedAt: [PagesConnectionUpdatedAt]
   body: [PagesConnectionBody]
   title: [PagesConnectionTitle]
 }
@@ -444,6 +472,8 @@ scalar Upload
 
 type UploadFile {
   _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String!
   hash: String!
   sha256: String
@@ -468,6 +498,11 @@ type UploadFileConnection {
 
 type UploadFileConnection_id {
   key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreatedAt {
+  key: DateTime
   connection: UploadFileConnection
 }
 
@@ -511,6 +546,11 @@ type UploadFileConnectionSize {
   connection: UploadFileConnection
 }
 
+type UploadFileConnectionUpdatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
 type UploadFileConnectionUrl {
   key: String
   connection: UploadFileConnection
@@ -518,6 +558,8 @@ type UploadFileConnectionUrl {
 
 type UploadFileGroupBy {
   _id: [UploadFileConnection_id]
+  createdAt: [UploadFileConnectionCreatedAt]
+  updatedAt: [UploadFileConnectionUpdatedAt]
   name: [UploadFileConnectionName]
   hash: [UploadFileConnectionHash]
   sha256: [UploadFileConnectionSha256]
